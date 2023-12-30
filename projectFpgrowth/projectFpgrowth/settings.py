@@ -74,21 +74,22 @@ WSGI_APPLICATION = 'projectFpgrowth.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "db",
-    }
-}
 # DATABASES = {
 #     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "store",
-#         "USER": "root",
-#         "PASSWORD": "",
-#         "HOST": "localhost",
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": "db",
 #     }
 # }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "store",
+        "USER": "root",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+    }
+}
 
 
 # Password validation

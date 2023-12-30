@@ -306,6 +306,8 @@
                 <div class="tab-content">
                     <div class="tab-pane active">
                         <div class="row">
+
+                        {% for product in products  %}
                             <div class="col l-2 m-4 s-6">
                                 <div class="product">
                                     {% with product1='assets/img/product/product1.jpg'  %}
@@ -313,12 +315,9 @@
                                     </div>
                                     {% endwith %}
                                     <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
+                                        <h3 class="product__name">{{product.name}}</h3>
                                         <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
+                                            <div class="price__new">{{product.originalPrice}}<span class="price__unit">đ</span></div>
                                         </div>
                                         <div class="product__sale">
                                             <span class="product__sale-percent">24%%</span>
@@ -329,285 +328,8 @@
                                     <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
                                 </div>
                             </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product5='assets/img/product/product5.jpg'  %}
-                                    <div class="product__avt" style="background-image: url('{% static product5 %}');">
-                                    </div>
-                                    {% endwith %}
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product2='assets/img/product/product2.jpg' %}
-                                    <div class="product__avt" style="background-image: url('{% static product2 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">   
-                                    {% with product3='assets/img/product/product3.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product3 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product6='assets/img/product/product6.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product6 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                        
-                                    
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product4='assets/img/product/product4.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product4 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                        
-                                    
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product1='assets/img/product/product1.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product1 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                        
-                                    
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product2='assets/img/product/product2.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product2 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                        
-                                    
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product4='assets/img/product/product4.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product4 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                        
-                                    
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product3='assets/img/product/product3.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product3 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                        
-                                    
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product6='assets/img/product/product6.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product6 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                        
-                                    
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
-                            <div class="col l-2 m-4 s-6">
-                                <div class="product">
-                                    
-                                    {% with product5='assets/img/product/product5.jpg'%}
-                                    <div class="product__avt" style="background-image: url('{% static product5 %}');">
-                                    </div>    
-                                    {% endwith %}
-                                        
-                                    
-                                    <div class="product__info">
-                                        <h3 class="product__name">Kem dưỡng da NestPlae</h3>
-                                        <div class="product__price">
-                                            <div class="price__old">
-                                                300.000 đ
-                                            </div>
-                                            <div class="price__new">200.000 <span class="price__unit">đ</span></div>
-                                        </div>
-                                        <div class="product__sale">
-                                            <span class="product__sale-percent">24%%</span>
-                                            <span class="product__sale-text">Giảm</span>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                                    <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                                </div>
-                            </div>
+                        {% endfor %}
+    
                         </div>
                     </div>
                     <div class="tab-pane">
@@ -1251,180 +973,30 @@
                 <h3 class="category__title">Ngọc Ánh Cometics</h3>
                 <h3 class="category__heading">SẢN PHẨM NỔI BẬT</h3>
                 <div class="owl-carousel hight owl-theme">
-                    <div class="product">
-                        
-                        {% with product1='assets/img/product/product1.jpg'%}
-                        <div class="product__avt" style="background-image: url('{% static product1 %}');">
-                        </div>    
-                        {% endwith %}
+                    
+                    {% for product in products %}
+                        <div class="product">
                             
-                        
-                        <div class="product__info">
-                            <h3 class="product__name">Son môi cao cấp</h3>
-                            <div class="product__price">
-                                <div class="price__old">
-                                    100.000 đ
-                                </div>
-                                <div class="price__new"> 70.000<span class="price__unit">đ</span></div>
-                            </div>
-                            <div class="product__sale">
-                                <span class="product__sale-percent">23</span>
-                                <span class="product__sale-text">Giảm</span>
-                            </div>
-                        </div>
-                        <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                        <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-                    </div>
-                    <div class="product">
-                        
-                        {% with product1='assets/img/product/product1.jpg'%}
-                        <div class="product__avt" style="background-image: url('{% static product1 %}');">
-                        </div>    
-                        {% endwith %}
+                            {% with product1='assets/img/product/product1.jpg'%}
+                            <div class="product__avt" style="background-image: url('{% static product1 %}');">
+                            </div>    
+                            {% endwith %}
+                                
                             
-                        
-                        <div class="product__info">
-                            <h3 class="product__name">Son môi cao cấp</h3>
-                            <div class="product__price">
-                                <div class="price__old">
-                                    100.000 đ
+                            <div class="product__info">
+                                <h3 class="product__name">{{product.name}}</h3>
+                                <div class="product__price">
+                                    <div class="price__new">{{product.originalPrice}}<span class="price__unit">đ</span></div>
                                 </div>
-                                <div class="price__new"> 70.000<span class="price__unit">đ</span></div>
-                            </div>
-                            <div class="product__sale">
-                                <span class="product__sale-percent">23</span>
-                                <span class="product__sale-text">Giảm</span>
-                            </div>
-                        </div>
-                        <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                        <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-
-                    </div>
-                    <div class="product">
-                        
-                        {% with product1='assets/img/product/product1.jpg'%}
-                        <div class="product__avt" style="background-image: url('{% static product1 %}');">
-                        </div>    
-                        {% endwith %}
-                            
-                        
-                        <div class="product__info">
-                            <h3 class="product__name">Son môi cao cấp</h3>
-                            <div class="product__price">
-                                <div class="price__old">
-                                    100.000 đ
+                                <div class="product__sale">
+                                    <span class="product__sale-percent">23</span>
+                                    <span class="product__sale-text">Giảm</span>
                                 </div>
-                                <div class="price__new"> 70.000<span class="price__unit">đ</span></div>
                             </div>
-                            <div class="product__sale">
-                                <span class="product__sale-percent">23</span>
-                                <span class="product__sale-text">Giảm</span>
-                            </div>
+                            <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
+                            <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
                         </div>
-                        <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                        <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-
-                    </div>
-                    <div class="product">
-                        
-                        {% with product1='assets/img/product/product1.jpg'%}
-                        <div class="product__avt" style="background-image: url('{% static product1 %}');">
-                        </div>    
-                        {% endwith %}
-                            
-                        
-                        <div class="product__info">
-                            <h3 class="product__name">Son môi cao cấp</h3>
-                            <div class="product__price">
-                                <div class="price__old">
-                                    100.000 đ
-                                </div>
-                                <div class="price__new"> 70.000<span class="price__unit">đ</span></div>
-                            </div>
-                            <div class="product__sale">
-                                <span class="product__sale-percent">23</span>
-                                <span class="product__sale-text">Giảm</span>
-                            </div>
-                        </div>
-                        <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                        <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-
-                    </div>
-                    <div class="product">
-                        
-                        {% with product1='assets/img/product/product1.jpg'%}
-                        <div class="product__avt" style="background-image: url('{% static product1 %}');">
-                        </div>    
-                        {% endwith %}
-                            
-                        
-                        <div class="product__info">
-                            <h3 class="product__name">Son môi cao cấp</h3>
-                            <div class="product__price">
-                                <div class="price__old">
-                                    100.000 đ
-                                </div>
-                                <div class="price__new"> 70.000<span class="price__unit">đ</span></div>
-                            </div>
-                            <div class="product__sale">
-                                <span class="product__sale-percent">23</span>
-                                <span class="product__sale-text">Giảm</span>
-                            </div>
-                        </div>
-                        <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                        <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-
-                    </div>
-                    <div class="product">
-                        
-                        {% with product1='assets/img/product/product1.jpg'%}
-                        <div class="product__avt" style="background-image: url('{% static product1 %}');">
-                        </div>    
-                        {% endwith %}
-                            
-                        
-                        <div class="product__info">
-                            <h3 class="product__name">Son môi cao cấp</h3>
-                            <div class="product__price">
-                                <div class="price__old">
-                                    100.000 đ
-                                </div>
-                                <div class="price__new"> 70.000<span class="price__unit">đ</span></div>
-                            </div>
-                            <div class="product__sale">
-                                <span class="product__sale-percent">23</span>
-                                <span class="product__sale-text">Giảm</span>
-                            </div>
-                        </div>
-                        <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                        <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-
-                    </div>
-                    <div class="product">
-                        
-                        {% with product1='assets/img/product/product1.jpg'%}
-                        <div class="product__avt" style="background-image: url('{% static product1 %}');">
-                        </div>    
-                        {% endwith %}
-                            
-                        
-                        <div class="product__info">
-                            <h3 class="product__name">Son môi cao cấp</h3>
-                            <div class="product__price">
-                                <div class="price__old">
-                                    100.000 đ
-                                </div>
-                                <div class="price__new"> 70.000<span class="price__unit">đ</span></div>
-                            </div>
-                            <div class="product__sale">
-                                <span class="product__sale-percent">23</span>
-                                <span class="product__sale-text">Giảm</span>
-                            </div>
-                        </div>
-                        <a href="{% url 'product' %}" class="viewDetail">Xem chi tiết</a>
-                        <a href="{% url 'cart' %}" class="addToCart">Thêm vào giỏ</a>
-
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -1580,7 +1152,7 @@
                     <ul class="footer__list">
                         <li class="footer__item">
                             <span class="footer__text">
-                                    <i class="fas fa-map-marked-alt"></i> 319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM
+                                    <i class="fas fa-map-marked-alt"></i> Quốc lộ 1A, Phường An Phú Đông, Quận 12, Tp.HCM
                                 </span>
                         </li>
                         <li class="footer__item">
@@ -1590,7 +1162,7 @@
                         </li>
                         <li class="footer__item">
                             <a href="#" class="footer__link">
-                                <i class="fas fa-envelope"></i> phuonggiang150@gmail.com
+                                <i class="fas fa-envelope"></i> belam@gmail.com
                             </a>
                         </li>
                         <li class="footer__item">
@@ -1627,68 +1199,10 @@
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            <span class="footer__text"> &copy Bản quyền thuộc về <a class="footer__link" href="#"> Phương Giang</a></span>
-        </div>
-    </div>
-    <!-- Modal Form -->
-    <div class="ModalForm">
-        <div class="modal" id="my-Register">
-            <a href="#" class="overlay-close"></a>
-            <div class="authen-modal register">
-                <h3 class="authen-modal__title">Đăng Kí</h3>
-                <div class="form-group">
-                    <label for="account" class="form-label">Họ Tên</label>
-                    <input id="account" name="account" type="text" class="form-control">
-                    <span class="form-message">Không hợp lệ !</span>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="form-label">Tài khoản Email *</label>
-                    <input id="password" name="password" type="text" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="form-label">Mật khẩu *</label>
-                    <input id="password" name="password" type="text" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="form-label">Nhập lại mật khẩu *</label>
-                    <input id="password" name="password" type="text" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-                <div class="authen__btns">
-                    <div class="btn btn--default">Đăng Kí</div>
-                </div>
-            </div>
-        </div>
-        <div class=" modal" id="my-Login">
-            <a href="#" class="overlay-close"></a>
-            <div class="authen-modal login">
-                <h3 class="authen-modal__title">Đăng Nhập</h3>
-                <div class="form-group">
-                    <label for="account" class="form-label">Địa chỉ email *</label>
-                    <input id="account" name="account" type="text" class="form-control">
-                    <span class="form-message">Tài khoản không chính xác !</span>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="form-label">Mật khẩu *</label>
-                    <input id="password" name="password" type="text" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-                <div class="authen__btns">
-                    <div class="btn btn--default">Đăng Nhập</div>
-                    <input type="checkbox" class="authen-checkbox">
-                    <label class="form-label">Ghi nhớ mật khẩu</label>
-                </div>
-                <a class="authen__link">Quên mật khẩu ?</a>
-            </div>
-        </div>
-        <div class="up-top" id="upTop" onclick="goToTop()">
-            <i class="fas fa-chevron-up"></i>
-        </div>
 
     </div>
+    <!-- Modal Form -->
+
     <script>
         $('.owl-carousel.hight').owlCarousel({
             loop: true,

@@ -1,0 +1,25 @@
+<!-- store/templates/rules.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FP-Growth Result</title>
+</head>
+<body>
+    <h1>FP-Growth Result</h1>
+    {{ result }}
+        {% for rule in result %}
+            <table border="1">
+                <tr>
+                    <th>Support</th>
+                    <th>Itemsets</th>
+                </tr>
+                <tr>
+                    <td>{{ rule.support }}</td>
+                    <td>{{ rule.itemsets }}</td>
+                </tr>
+            </table>
+            <br>
+        {% endfor %}
+
+</body>
+</html>
