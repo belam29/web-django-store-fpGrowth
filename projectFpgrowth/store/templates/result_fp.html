@@ -6,20 +6,23 @@
 </head>
 <body>
     <h1>FP-Growth Result</h1>
-    {{ result }}
-        {% for rule in result %}
+    <!-- {{ result }} -->
+        
             <table border="1">
                 <tr>
                     <th>Support</th>
                     <th>Itemsets</th>
                 </tr>
+                
+                {% for items in result %}
                 <tr>
-                    <td>{{ rule.support }}</td>
-                    <td>{{ rule.itemsets }}</td>
+                    <td>{{ items.support }}</td>
+                    <td>{{ items.itemsets }}</td>
                 </tr>
+                {% endfor %}
+                
             </table>
             <br>
-        {% endfor %}
 
 </body>
 </html>

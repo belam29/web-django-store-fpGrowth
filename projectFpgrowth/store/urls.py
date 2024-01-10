@@ -28,5 +28,6 @@ urlpatterns = [
     path('signIn/', views.SignIn, name='signIn'),
     path('signUp/', views.SignUp, name='signUp'),
     path('user/', views.User, name='user'),
-    path('result/', views.result_fp, name="result")
+    path('result/', views.result_fp, name="result"),
+    path('predict_items/', views.predict_items, name='predict_items')
 ]

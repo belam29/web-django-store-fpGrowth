@@ -8,12 +8,9 @@ class Product(models.Model):
     originalPrice = models.DecimalField(max_digits=10, decimal_places=0)
     promotionPrice = models.DecimalField(max_digits=10, decimal_places=0)
     image = models.CharField(max_length=50)
-    createdBy = models.IntegerField()
-    createdDate = models.DateField()
     cateId = models.IntegerField()
     qty = models.IntegerField()
     des = models.CharField(max_length=1000)
-    status = models.BooleanField()
     soldCount = models.IntegerField()
     class Meta: 
         db_table = "products" 
@@ -31,3 +28,29 @@ class User(models.Model):
 
     class Meta:
         db_table = "users"
+
+# table order
+class Transaction(models.Model):
+    createdDate = models.DateField()
+    receivedDate = models.DateField(null=True)
+    status = models.CharField(max_length=20)
+    phone = models.IntegerField()
+    address = models.CharField(max_length=500)
+    email = models.EmailField()
+    city = models.CharField(max_length=100)
+    note = models.CharField(max_length=1000)
+
+    class Meta:
+        managed = False
+        db_table = 'order'
+        
+class OrderDetail(models.Model):
+    orderId = models.ForeignKey('Transaction', on_delete=models.CASCADE)
+    productId = models.ForeignKey('Product', on_delete=models.CASCADE)
+    qty = models.IntegerField()
+    productPrice = models.DecimalField(max_digits=10, decimal_places=0)
+    productName = models.CharField(max_length=100)
+    productImage = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"OrderDetail {self.id} - Order: {self.orderId}, Product: {self.productId}, Qty: {self.qty}"
