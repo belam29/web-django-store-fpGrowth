@@ -1,0 +1,55 @@
+{% extends 'cart.html' %}
+{% load static %}
+{% block predict %}
+
+    <div class="main">
+        <div class="grid wide">
+            <div class="row">
+                <div class="col l-8 m-12 s-12">
+                    <div class="main__cart">
+                        <div class="row title">
+                            <div class="col l-1 m-1 s-0">Chọn</div>
+                            <div class="col l-4 m-4 s-8">Sản phẩm</div>
+                        </div>
+
+                        {% for item in predictions %}
+                            <div class="row item">
+                                <div class="col l-1 m-1 s-0">
+                                    <input type="checkbox" name="a">
+                                </div>
+                                <div class="col l-8 m-8 s-8">
+                                    <div class="main__cart-product">
+                                        <img src="{% static 'assets/img/product/product2.jpg' %}" alt="">
+                                        <div class="name">{{item}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="col l-3 m-3 s-0">
+                                    <div class="buttons_added ">
+                                        <button data-product={{product.id}} data-action = "add" class="btn btn--default addToCart update-cart" style="border: 0;font-size: 12px;">Thêm giỏ hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        
+ 
+                    </div>
+                </div>
+                <div class="col l-4 m-12 s-12">
+                    <div class="main__pay">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="main__pay-title">Sản phẩm</div>
+                            {{form.name}}
+                            <button class="btn btn--default">Gợi ý</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock predict %}

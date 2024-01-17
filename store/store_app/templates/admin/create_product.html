@@ -1,0 +1,58 @@
+
+{% extends 'admin/menu.html' %}
+{% load static %}
+{% block create_product %}
+
+<script>
+    function toggleCategoryFields() {
+        var categorySelect = document.getElementById('id_category');
+        var newCategoryInput = document.getElementById('id_new_category');
+        var categorySlugInput = document.getElementById('id_category_slug');
+
+        if (categorySelect.value === '__other__') {
+            newCategoryInput.style.display = 'block';
+            categorySlugInput.value = '';  // Clear the slug when showing new category input
+        } else {
+            newCategoryInput.style.display = 'none';
+            categorySlugInput.value = categorySelect.options[categorySelect.selectedIndex].getAttribute('data-slug');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        toggleCategoryFields();  // Initial state
+
+        var categorySelect = document.getElementById('id_category');
+        categorySelect.addEventListener('change', toggleCategoryFields);
+    });
+</script>
+
+<div class="grid wide">
+    <div class="row">
+        <div class="col l-7 m-12 s-12" style="padding-top: 40px;">
+            <div class="pay__heading">Thêm sản phẩm</div>
+            <form method="POST" action="/create/" enctype="multipart/form-data">
+                {% csrf_token %}  
+                <div class="form-group" id="new-category-group" style="display: none;">
+                    <span class="form-message"></span>
+                    {{ form.new_category }}
+                </div>
+                <div class="form-group" id="new-category-group" style="display: none;">
+                    <span class="form-message"></span>
+                    {{ form.category_slug }}
+                </div>         
+
+                {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                    {{ field }}
+                    <span class="form-message"></span>
+                </div>
+                {% endfor %}
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{% static 'assets/js/commonscript.js' %}"></script>
+{% endblock create_product %}

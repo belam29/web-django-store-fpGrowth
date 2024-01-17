@@ -1,0 +1,374 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- https://cocoshop.vn/ -->
+<!-- http://mauweb.monamedia.net/vanihome/ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <!-- Font roboto -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Icon fontanwesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Reset css & grid sytem -->
+    <link rel="stylesheet" href="{% static 'assets/css/library.css' %}">
+    <!-- Owl Slider css -->
+    <link rel="stylesheet" href="{% static 'assets/owlCarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/owlCarousel/assets/owl.theme.default.min.css' %}">
+    <!-- Layout -->
+    <link rel="stylesheet" href="{% static 'assets/css/common.css' %}">
+    <!-- index -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/contact.css' %}">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Owl caroucel Js-->
+    <script src="{% static 'assets/owlCarousel/owl.carousel.min.js' %}"></script>
+</head>
+
+<body>
+    <div class="header scrolling" id="myHeader">
+        <div class="grid wide">
+            <div class="header__top">
+                <div class="navbar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="{% url 'index' %}l" class="header__logo">
+                    <img src="{% static 'assets/logo.png' %}" alt="">
+                </a>
+                <div class="header__search">
+                    <form action="{% url 'search' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="header__search-wrap">
+                            <input type="text" class="header__search-input" placeholder="Tìm kiếm" name="searched">
+                            <button class="header__search-icon" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="header__account">
+                    
+                    {% if request.user.is_authenticated %}
+                        <a href="#" class="header__account-login">{{customer}}</a>
+                        <a href="{% url 'logout' %}" class="header__account-register">Đăng xuất</a>
+                    {% else %}
+                        <a href="{% url 'signIn' %}" class="header__account-login">Đăng Nhập</a>
+                        <a href="{% url 'signUp' %}" class="header__account-register">Đăng Kí</a>
+                    {% endif %}
+                </div>
+                <!-- Cart -->
+                <div class="header__cart have" href="#">
+                    <i class="fas fa-shopping-basket"></i>
+                    <div class="header__cart-amount">
+                        {{order.get_cart_items}}
+                    </div>
+                    <div class="header__cart-wrap">
+                        <ul class="order__list">
+                            
+                            {% for item in items %}
+                            <li class="item-order">
+                                <div class="order-wrap">
+                                    <a href="{% url 'detail_product' %}?id={{item.product.id}}" class="order-img">
+                                        <img src="{{item.product.ImageURL}}" alt="">
+                                    </a>
+                                    <div class="order-main">
+                                        <a href="{% url 'detail_product' %}?id={{item.product.id}}" class="order-main-name">{{item.product.name}}</a>
+                                        <div class="order-main-price">{{item.quantity}} x {{item.product.price}} ₫</div>
+                                    </div>
+                                    <a href="{% url 'detail_product' %}?id={{item.product.id}}" class="order-close"><i class="far fa-times-circle"></i></a>
+                                </div>
+                            </li>
+                            {% endfor %}
+                                
+
+                        </ul>
+                        <div class="total-money">Tổng cộng: {{order.get_cart_total}}</div>
+                        <a href="{% url 'cart' %}" class="btn btn--default cart-btn">Xem giỏ hàng</a>
+                        <a href="{% url 'pay' %}" class="btn btn--default cart-btn orange">Thanh toán</a>
+                        <!-- norcart -->
+                        <!-- <img class="header__cart-img-nocart" src="http://www.giaybinhduong.com/images/empty-cart.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu -->
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <form action="{% url 'search' %}" method="POST">
+                    {% csrf_token %}
+                    <li class="header__nav-item nav__search">
+                        <div class="nav__search-wrap">
+                            <input class="nav__search-input" type="text" name="searched" id="" placeholder="Tìm sản phẩm...">
+                        </div>
+                        <button class="nav__search-btn" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </li>
+                </form>
+
+                <li class="header__nav-item authen-form">
+                    
+                    {% if request.user.is_authenticated %}
+                        <a href="#" class="header__nav-link">User: {{customer}}</a>
+                        <a href="{% url 'logout' %}" class="header__nav-link">Đăng xuất</a>
+                    {% else %}
+                        <ul class="sub-nav">
+                            <li class="sub-nav__item">
+                                <a href="{% url 'signIn' %}" class="sub-nav__link">Đăng Nhập</a>
+                            </li>
+                            <li class="sub-nav__item">
+                                <a href="{% url 'signUp' %}r" class="sub-nav__link">Đăng Kí</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                    
+                </li>
+                <li class="header__nav-item index">
+                    <a href="{% url 'index' %}" class="header__nav-link">Trang chủ</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="{% url 'cart' %}" class="header__nav-link">Giỏ hàng</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="{% url 'listProduct' %}" class="header__nav-link">Sản Phẩm</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="{% url 'news' %}" class="header__nav-link">Tin Tức</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="{% url 'contact' %}" class="header__nav-link">Liên Hệ</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="grid wide">
+            <div class="main__breadcrumb">
+                <div class="breadcrumb__item">
+                    <a href="#" class="breadcrumb__link">Trang chủ</a>
+                </div>
+                <div class="breadcrumb__item">
+                    <a href="{% url 'cart' %}" class="header__nav-link">Giỏ hàng</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l-6 m-12 s-12">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3738.382986183426!2d106.33761211423521!3d20.449457212678926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zbmfhu41jIMOhbmggY29zbWV0aWNz!5e0!3m2!1svi!2s!4v1621128017258!5m2!1svi!2s" width="100%"
+                        height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="col l-6 m-12 s-12">
+                    <div class="contact__wrap">
+                        <div class="contact__img">
+                            <img src="http://mauweb.monamedia.net/vanihome/wp-content/uploads/2018/04/logo-mona.png" alt="">
+                        </div>
+                        <ul class="contact__info">
+                            <li class="contact__text">
+                                <i class="fas fa-map-marked-alt"></i> 319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM
+                            </li>
+                            <li>
+                                <a href="tel:076 922 0162" class="contact__link">
+                                    <i class="fas fa-phone"></i> 076 922 0162
+                                </a>
+                                <a href="tel:076 922 0162" class="contact__link">
+                                    &#8212; 076 922 0162
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="contact__link">
+                                    <i class="fas fa-envelope"></i> phuonggiang150@gmail.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="about-us">
+                        <div class="about-us__heading">Liên hệ với chúng tôi</div>
+                        <div class="form__group">
+                            <div>
+                                <input type="text" value="Họ và tên">
+                            </div>
+                            <div>
+                                <input type="text" value="Email">
+                            </div>
+                            <div>
+                                <input type="text" value="Địa chỉ">
+                            </div>
+                            <div>
+                                <input type="text" value="Số điện thoại">
+                            </div>
+                        </div>
+                        <textarea name="" id="" cols="30" rows="5" placeholder="Lời nhắn"></textarea>
+                        <button type="submit" class="btn btn--default">Gửi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="footer">
+        <div class="grid wide">
+            <div class="row">
+                <div class="col l-3 m-6 s-12">
+                    <h3 class="footer__title">Menu</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Trang điểm</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Chăm sóc da</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Chăm sóc tóc</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Nước hoa</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Chăm sóc toàn thân </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l-3 m-6 s-12">
+                    <h3 class="footer__title">Hỗ trợ khách hàng</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Hướng dẫn mua hàng</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Giải đáp thắc mắc</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Chính sách mua hàng</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">Chính sách đổi trả</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l-3 m-6 s-12">
+                    <h3 class="footer__title">Liên hệ</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <span class="footer__text">
+                                    <i class="fas fa-map-marked-alt"></i> 319 C16 Lý Thường Kiệt, Phường 15, Quận 11, Tp.HCM
+                            </span>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">
+                                <i class="fas fa-phone"></i> 076 922 0162
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="footer__link">
+                                <i class="fas fa-envelope"></i> phuonggiang150@gmail.com
+                            </a>
+                        </li>
+                        <li class="footer__item">
+                            <div class="social-group">
+                                <a href="#" class="social-item"><i class="fab fa-facebook-f"></i>
+                                    </a>
+                                <a href="#" class="social-item"><i class="fab fa-twitter"></i>
+                                    </a>
+                                <a href="#" class="social-item"><i class="fab fa-pinterest-p"></i>
+                                    </a>
+                                <a href="#" class="social-item"><i class="fab fa-invision"></i>
+                                    </a>
+                                <a href="#" class="social-item"><i class="fab fa-youtube"></i>  
+                                    </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l-3 m-6 s-12">
+                    <h3 class="footer__title">Đăng kí</h3>
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <span class="footer__text">Đăng ký để nhận được được thông tin ưu đãi mới nhất từ chúng tôi.</span>
+                        </li>
+                        <li class="footer__item">
+                            <div class="send-email">
+                                <input class="send-email__input" type="email" placeholder="Nhập Email...">
+                                <a href="#" class="send-email__link">
+                                    <i class="fas fa-paper-plane"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Form -->
+    <div class="ModalForm">
+        <div class="modal" id="my-Register">
+            <a href="#" class="overlay-close"></a>
+            <div class="authen-modal register">
+                <h3 class="authen-modal__title">Đăng Kí</h3>
+                <div class="form-group">
+                    <label for="account" class="form-label">Họ Tên</label>
+                    <input id="account" name="account" type="text" class="form-control">
+                    <span class="form-message">Không hợp lệ !</span>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Tài khoản Email *</label>
+                    <input id="password" name="password" type="text" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu *</label>
+                    <input id="password" name="password" type="text" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Nhập lại mật khẩu *</label>
+                    <input id="password" name="password" type="text" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+                <div class="authen__btns">
+                    <div class="btn btn--default">Đăng Kí</div>
+                </div>
+            </div>
+        </div>
+        <div class=" modal" id="my-Login">
+            <a href="#" class="overlay-close"></a>
+            <div class="authen-modal login">
+                <h3 class="authen-modal__title">Đăng Nhập</h3>
+                <div class="form-group">
+                    <label for="account" class="form-label">Địa chỉ email *</label>
+                    <input id="account" name="account" type="text" class="form-control">
+                    <span class="form-message">Tài khoản không chính xác !</span>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu *</label>
+                    <input id="password" name="password" type="text" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+                <div class="authen__btns">
+                    <div class="btn btn--default">Đăng Nhập</div>
+                    <input type="checkbox" class="authen-checkbox">
+                    <label class="form-label">Ghi nhớ mật khẩu</label>
+                </div>
+                <a class="authen__link">Quên mật khẩu ?</a>
+            </div>
+        </div>
+        <div class="up-top" id="upTop" onclick="goToTop()">
+            <i class="fas fa-chevron-up"></i>
+        </div>
+
+    </div>
+    <!-- Sccipt for owl caroucel -->
+
+    <!-- Script common -->
+    <script src="{% static 'assets/js/commonscript.js' %}"></script>
+
+
+</body>
+
+</html>

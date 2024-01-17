@@ -1,0 +1,87 @@
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Icon fontanwesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Reset css & grid sytem -->
+    <link rel="stylesheet" href="{% static 'assets/css/library.css' %}">
+    <!-- Owl Slider css -->
+    <link rel="stylesheet" href="{% static 'assets/owlCarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/owlCarousel/assets/owl.theme.default.min.css' %}">
+    <!-- Layout -->
+    <link rel="stylesheet" href="{% static 'assets/css/common.css' %}">
+    <!-- index -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/pay.css' %}">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Owl caroucel Js-->
+    <script src="{% static 'assets/owlCarousel/owl.carousel.min.js' %}"></script>
+
+    <style type="text/css">
+        /*==Reset CSS==*/
+            * {
+            margin: 0;
+            padding: 0;
+            }
+
+            /*==Style cơ bản cho website==*/
+            body {
+            font-family: sans-serif;
+            color: #333;
+            font-size: 15px;
+            }
+
+            /*==Style cho menu===*/
+            #menu ul {
+            background: #1F568B;
+            list-style-type: none;
+            text-align: center;
+            }
+            #menu li {
+            color: #f1f1f1;
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            margin-left: -5px;
+            }
+            #menu a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            }
+            #menu a:hover {
+            background: #F1F1F1;
+            color: #333;
+            }
+    </style>
+
+</head>
+<body>
+    <div id="menu">
+        <ul>
+          <li><a href="#">Thêm sản phẩm</a></li>
+          <li><a href="#">Diễn đàn</a></li>
+          <li><a href="#">Tin tức</a></li>
+          <li><a href="#">Hỏi đáp</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </div>
+
+      
+      {% block create_product %}
+        
+      {% endblock create_product %}
+        
+</body>
+</html>
