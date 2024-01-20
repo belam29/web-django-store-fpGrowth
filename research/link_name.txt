@@ -1,7 +1,3 @@
-https://link.springer.com/chapter/10.1007/3-540-47887-6_34
-Top Down FP-Growth for Association Rule Mining
----------------------------------------------
-https://d1wqtxts1xzle7.cloudfront.net/47682063/IJCST-V4I4P28-libre.pdf?1470020004=&response-content-disposition=inline%3B+filename%3DIJCST_V4I4P28_Mrs_M_Kavitha_Ms_S_T_Tami.pdf&Expires=1704297216&Signature=XN7vpoVZSyBnKexGXDKfRA5YphF2pBk1F1-aWQW1bLwYrWInZ59674TjgP1z9mv3CuuO96-Zri9JB1iHd5tACDpG4UgHjNMjf-9ibYjG5aJZ74MDsG87TuP-aYryWQdwsKBtT65qXga33o3OgbXQx1u4orP6xOwYs~9ct0O0BAOGLsF98rJCVPJh--k0~GCI9sXg6QV65yoFLXeJ2t3gED5Tdcqknv9t17eiXX2bAePQr3LY6iLDeJcrlxop7LAN4LMjnQyyqEdTMYYHQ7dDoeAlrbl7m8j9OrbvatgciK59-pxEYFBp6aRRFy5HfT6YEEDA~ZXExACAban-9HRBnA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA
+bài báo:
+http://ftp.informatik.rwth-aachen.de/Publications/CEUR-WS/Vol-126/racz.pdf
 
-Comparative Study on Apriori Algorithm and Fp Growth Algorithm with Pros and Cons 
----------------------------------------------------------------------
